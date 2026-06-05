@@ -24,7 +24,7 @@ export default function ContactSection() {
     <section
       ref={sectionRef}
       id="contact"
-      className="py-24 px-6 sm:px-12 lg:px-24 relative overflow-hidden"
+      className="view-element py-24 px-6 sm:px-12 lg:px-24 relative overflow-hidden"
       data-aos="fade-left"
     >
       {/* Arrow SVG with parallax */}
@@ -39,7 +39,7 @@ export default function ContactSection() {
           transform: `translateX(${scrollY * 0.1 - 100}px) rotate(45deg)`,
           opacity: 0.1,
         }}
-        fill="#CF4647"
+        fill="var(--themeColor4)"
       >
         <path d="M100 20L130 80H70L100 20Z" />
         <path d="M100 80L130 140H70L100 80Z" />
@@ -51,15 +51,17 @@ export default function ContactSection() {
         <div className="mb-6" data-aos="fade-up">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-            style={{ fontFamily: 'var(--font-montserrat)' }}
+            style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
           >
-            Get In <span style={{ color: '#FFD369' }}>Touch</span>
+            Get In <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Touch</span>
           </h2>
+          <div className="section-title-line mx-auto" />
           <p
-            className="text-xl sm:text-2xl font-semibold"
+            className="text-xl sm:text-2xl font-semibold mt-6"
             style={{
-              color: '#F8F6F6',
+              color: 'var(--themeColor3)',
               fontFamily: 'var(--font-montserrat)',
+              transition: 'color 0.3s ease',
             }}
           >
             Let&apos;s Work Together
@@ -71,8 +73,9 @@ export default function ContactSection() {
           data-aos="fade-up"
           data-aos-delay="100"
           style={{
-            color: '#a8b2d1',
+            color: 'var(--themeColor3)',
             fontFamily: 'var(--font-quicksand)',
+            transition: 'color 0.3s ease',
           }}
         >
           I&apos;m always open to new opportunities and collaborations. Whether you have a project
@@ -89,15 +92,19 @@ export default function ContactSection() {
             href="mailto:parthboricha.dev@gmail.com"
             className="flex items-center gap-2 text-sm"
             style={{
-              color: '#a8b2d1',
+              color: 'var(--themeColor3)',
               fontFamily: 'var(--font-source-code-pro)',
+              transition: 'color 0.3s ease',
             }}
           >
-            <Mail size={16} style={{ color: '#FFD369' }} />
+            <Mail size={16} style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }} />
             parthboricha.dev@gmail.com
           </a>
-          <span className="flex items-center gap-2 text-sm" style={{ color: '#a8b2d1', fontFamily: 'var(--font-source-code-pro)' }}>
-            <MapPin size={16} style={{ color: '#FFD369' }} />
+          <span
+            className="flex items-center gap-2 text-sm"
+            style={{ color: 'var(--themeColor3)', fontFamily: 'var(--font-source-code-pro)', transition: 'color 0.3s ease' }}
+          >
+            <MapPin size={16} style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }} />
             India
           </span>
         </div>
@@ -109,9 +116,10 @@ export default function ContactSection() {
           className="tk-button inline-flex items-center gap-2 px-8 py-3 rounded font-semibold text-base animate-shadow-pulse"
           style={{
             fontFamily: 'var(--font-montserrat)',
-            border: '2px solid #FFD369',
-            color: '#FFD369',
+            border: '2px solid var(--themeColor4)',
+            color: 'var(--themeColor4)',
             backgroundColor: 'transparent',
+            transition: 'color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease',
           }}
         >
           Get in touch

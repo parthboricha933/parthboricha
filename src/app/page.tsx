@@ -1,5 +1,6 @@
 'use client';
 
+import ThemeProvider from '@/components/portfolio/ThemeProvider';
 import AOSProvider from '@/components/portfolio/AOSProvider';
 import Preloader from '@/components/portfolio/Preloader';
 import CustomCursor from '@/components/portfolio/CustomCursor';
@@ -22,33 +23,32 @@ import Footer from '@/components/portfolio/Footer';
 
 export default function Home() {
   return (
-    <AOSProvider>
-      <Preloader />
-      <CustomCursor />
-      <ScrollProgress />
-      <CursorLine />
-      <GoldenBlob />
-      <Header />
-      <SidebarNav />
-      <SocialSidebar />
-      <MobileChatButtons />
+    <ThemeProvider>
+      <AOSProvider>
+        <Preloader />
+        <CustomCursor />
+        <ScrollProgress />
+        <CursorLine />
+        <GoldenBlob />
+        <Header />
+        <SidebarNav />
+        <SocialSidebar />
+        <MobileChatButtons />
 
-      <main
-        className="relative min-h-screen"
-        style={{ backgroundColor: '#222831', color: '#F8F6F6' }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <HeroSection />
-          <AboutSection />
-          <ExperienceSection />
-          <ProjectsSection />
-          <ReviewsSection />
-          <CertificationsSection />
-          <GithubSection />
-          <ContactSection />
-          <Footer />
-        </div>
-      </main>
-    </AOSProvider>
+        <main className="relative min-h-screen">
+          <div className="max-w-6xl mx-auto">
+            <HeroSection />
+            <AboutSection />
+            <ExperienceSection />
+            <ProjectsSection />
+            <ReviewsSection />
+            <CertificationsSection />
+            <GithubSection />
+            <ContactSection />
+            <Footer />
+          </div>
+        </main>
+      </AOSProvider>
+    </ThemeProvider>
   );
 }

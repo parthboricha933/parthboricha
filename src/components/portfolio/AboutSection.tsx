@@ -31,27 +31,27 @@ function KubernetesIcon({ scrollY }: { scrollY: number }) {
       width="300"
       height="300"
       viewBox="0 0 100 100"
-      fill="#CF4647"
       style={{
         top: '10%',
         right: '-5%',
         transform: `translateY(${offset}px) rotate(${scrollY * 0.05}deg)`,
+        color: 'var(--themeColor4)',
       }}
     >
-      <path d="M50 5L90 27.5V72.5L50 95L10 72.5V27.5L50 5Z" fill="none" stroke="#CF4647" strokeWidth="1.5" />
-      <circle cx="50" cy="50" r="12" fill="none" stroke="#CF4647" strokeWidth="1.5" />
-      <circle cx="50" cy="22" r="4" fill="#CF4647" />
-      <circle cx="74" cy="36" r="4" fill="#CF4647" />
-      <circle cx="74" cy="64" r="4" fill="#CF4647" />
-      <circle cx="50" cy="78" r="4" fill="#CF4647" />
-      <circle cx="26" cy="64" r="4" fill="#CF4647" />
-      <circle cx="26" cy="36" r="4" fill="#CF4647" />
-      <line x1="50" y1="38" x2="50" y2="26" stroke="#CF4647" strokeWidth="1" />
-      <line x1="61" y1="44" x2="72" y2="38" stroke="#CF4647" strokeWidth="1" />
-      <line x1="61" y1="56" x2="72" y2="62" stroke="#CF4647" strokeWidth="1" />
-      <line x1="50" y1="62" x2="50" y2="74" stroke="#CF4647" strokeWidth="1" />
-      <line x1="39" y1="56" x2="28" y2="62" stroke="#CF4647" strokeWidth="1" />
-      <line x1="39" y1="44" x2="28" y2="38" stroke="#CF4647" strokeWidth="1" />
+      <path d="M50 5L90 27.5V72.5L50 95L10 72.5V27.5L50 5Z" fill="none" stroke="var(--themeColor4)" strokeWidth="1.5" />
+      <circle cx="50" cy="50" r="12" fill="none" stroke="var(--themeColor4)" strokeWidth="1.5" />
+      <circle cx="50" cy="22" r="4" fill="var(--themeColor4)" />
+      <circle cx="74" cy="36" r="4" fill="var(--themeColor4)" />
+      <circle cx="74" cy="64" r="4" fill="var(--themeColor4)" />
+      <circle cx="50" cy="78" r="4" fill="var(--themeColor4)" />
+      <circle cx="26" cy="64" r="4" fill="var(--themeColor4)" />
+      <circle cx="26" cy="36" r="4" fill="var(--themeColor4)" />
+      <line x1="50" y1="38" x2="50" y2="26" stroke="var(--themeColor4)" strokeWidth="1" />
+      <line x1="61" y1="44" x2="72" y2="38" stroke="var(--themeColor4)" strokeWidth="1" />
+      <line x1="61" y1="56" x2="72" y2="62" stroke="var(--themeColor4)" strokeWidth="1" />
+      <line x1="50" y1="62" x2="50" y2="74" stroke="var(--themeColor4)" strokeWidth="1" />
+      <line x1="39" y1="56" x2="28" y2="62" stroke="var(--themeColor4)" strokeWidth="1" />
+      <line x1="39" y1="44" x2="28" y2="38" stroke="var(--themeColor4)" strokeWidth="1" />
     </svg>
   );
 }
@@ -77,7 +77,7 @@ export default function AboutSection() {
     <section
       ref={sectionRef}
       id="myself"
-      className="py-24 px-6 sm:px-12 lg:px-24 relative overflow-hidden"
+      className="view-element py-24 px-6 sm:px-12 lg:px-24 relative overflow-hidden"
       data-aos="fade-down-left"
     >
       {/* Kubernetes parallax icon */}
@@ -90,10 +90,11 @@ export default function AboutSection() {
         <div className="mb-16" data-aos="zoom-in-right">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: 'var(--font-montserrat)' }}
+            style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
           >
-            About <span style={{ color: '#FFD369' }}>Me</span>
+            About <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Me</span>
           </h2>
+          <div className="section-title-line" />
         </div>
 
         <div className="grid md:grid-cols-5 gap-12 items-start">
@@ -104,17 +105,18 @@ export default function AboutSection() {
               data-aos="zoom-in-left"
               data-aos-delay="0"
               style={{
-                color: '#a8b2d1',
+                color: 'var(--themeColor3)',
                 fontFamily: 'var(--font-quicksand)',
+                transition: 'color 0.3s ease',
               }}
             >
-              Hello! I&apos;m <span style={{ color: '#FFD369' }}>Parth Boricha</span>, a passionate
+              Hello! I&apos;m <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Parth Boricha</span>, a passionate
               full stack web developer with over 3 years of experience building modern, scalable web
               applications. I specialize in crafting responsive, user-friendly interfaces with{' '}
-              <span style={{ color: '#FFD369' }}>React</span> and{' '}
-              <span style={{ color: '#FFD369' }}>Next.js</span>, and building robust, efficient
-              backend systems with <span style={{ color: '#FFD369' }}>Node.js</span> and{' '}
-              <span style={{ color: '#FFD369' }}>Express.js</span>.
+              <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>React</span> and{' '}
+              <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Next.js</span>, and building robust, efficient
+              backend systems with <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Node.js</span> and{' '}
+              <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Express.js</span>.
             </p>
 
             <p
@@ -122,8 +124,9 @@ export default function AboutSection() {
               data-aos="zoom-in-left"
               data-aos-delay="100"
               style={{
-                color: '#a8b2d1',
+                color: 'var(--themeColor3)',
                 fontFamily: 'var(--font-quicksand)',
+                transition: 'color 0.3s ease',
               }}
             >
               I love turning complex problems into simple, elegant solutions. Whether it&apos;s
@@ -137,20 +140,21 @@ export default function AboutSection() {
               data-aos="zoom-in-left"
               data-aos-delay="200"
               style={{
-                color: '#a8b2d1',
+                color: 'var(--themeColor3)',
                 fontFamily: 'var(--font-quicksand)',
+                transition: 'color 0.3s ease',
               }}
             >
               Besides coding, I&apos;m a passionate{' '}
-              <span style={{ color: '#FFD369' }}>gamer</span> and{' '}
-              <span style={{ color: '#FFD369' }}>music lover</span>. I believe these hobbies fuel
+              <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>gamer</span> and{' '}
+              <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>music lover</span>. I believe these hobbies fuel
               my creativity and help me think outside the box when building digital experiences.
             </p>
 
             {/* Tech stack */}
             <h3
               className="text-xl font-bold mb-4"
-              style={{ fontFamily: 'var(--font-montserrat)', color: '#F8F6F6' }}
+              style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
             >
               Tech Stack
             </h3>
@@ -162,11 +166,12 @@ export default function AboutSection() {
                   data-aos-delay={i * 30}
                   className="flex items-center gap-2 text-sm"
                   style={{
-                    color: '#a8b2d1',
+                    color: 'var(--themeColor4)',
                     fontFamily: 'var(--font-source-code-pro)',
+                    transition: 'color 0.3s ease',
                   }}
                 >
-                  <span style={{ color: '#FFD369' }}>&#9656;</span>
+                  <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>&#9656;</span>
                   {tech}
                 </div>
               ))}
@@ -183,11 +188,11 @@ export default function AboutSection() {
               {/* Decorative border offset */}
               <div
                 className="profile-border-offset absolute -top-3 -left-3 w-full h-full rounded-lg"
-                style={{ border: '2px solid #FFD369', zIndex: 0 }}
+                style={{ border: '2px solid var(--themeColor4)', zIndex: 0, transition: 'border-color 0.3s ease' }}
               />
               <div
                 className="relative rounded-lg overflow-hidden w-64 h-80 sm:w-72 sm:h-96"
-                style={{ border: '3px solid #F8F6F6', zIndex: 1 }}
+                style={{ border: '3px solid var(--themeColor3)', zIndex: 1, transition: 'border-color 0.3s ease' }}
               >
                 <Image
                   src="/assets/profile.jpg"
@@ -202,9 +207,10 @@ export default function AboutSection() {
               <div
                 className="absolute -bottom-4 -right-4 w-16 h-16 animate-subtle-float"
                 style={{
-                  border: '2px solid #FFD369',
+                  border: '2px solid var(--themeColor4)',
                   borderRadius: '4px',
                   opacity: 0.5,
+                  transition: 'border-color 0.3s ease',
                 }}
               />
             </div>

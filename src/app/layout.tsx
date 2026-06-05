@@ -53,9 +53,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="dark">
+      <head>
+        <meta name="theme-color" content="#F5D061" />
+        <style>{`
+          :root {
+            --themeColor1: #F8F6F6;
+            --themeColor2: #F5D061;
+            --themeColor3: #2A363B;
+            --themeColor4: #CF4647;
+          }
+        `}</style>
+      </head>
       <body
         className={`${montserrat.variable} ${quicksand.variable} ${sourceCodePro.variable} antialiased`}
-        style={{ backgroundColor: "#222831", color: "#F8F6F6" }}
       >
         {children}
       </body>

@@ -34,9 +34,10 @@ export default function Header() {
       <motion.header
         className="fixed top-0 left-0 right-0 z-[100] transition-all duration-300"
         style={{
-          backgroundColor: scrolled ? 'rgba(34, 40, 49, 0.95)' : 'transparent',
+          backgroundColor: scrolled ? 'var(--themeColor1)' : 'transparent',
           backdropFilter: scrolled ? 'blur(10px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(248,246,246,0.05)' : 'none',
+          borderBottom: scrolled ? '1px solid var(--themeColor2)' : 'none',
+          transition: 'background-color 0.3s ease, border-color 0.3s ease',
         }}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
@@ -46,7 +47,10 @@ export default function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Left: Profile image */}
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-[#FFD369]">
+              <div
+                className="w-9 h-9 rounded-full overflow-hidden border-2"
+                style={{ borderColor: 'var(--themeColor4)', transition: 'border-color 0.3s ease' }}
+              >
                 <Image
                   src="/assets/profile.jpg"
                   alt="Parth Boricha"
@@ -59,8 +63,11 @@ export default function Header() {
 
             {/* Center-left: Views & Likes */}
             <div className="hidden sm:flex items-center gap-4">
-              <div className="flex items-center gap-1.5 text-sm" style={{ color: '#a8b2d1' }}>
-                <Eye size={16} style={{ color: '#FFD369' }} />
+              <div
+                className="flex items-center gap-1.5 text-sm"
+                style={{ color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
+              >
+                <Eye size={16} style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }} />
                 <span>1.1K</span>
               </div>
               <button
@@ -70,9 +77,9 @@ export default function Header() {
               >
                 <Heart
                   size={16}
-                  style={{ color: liked ? '#CF4647' : '#a8b2d1' }}
+                  style={{ color: liked ? 'var(--themeColor4)' : 'var(--themeColor3)', transition: 'color 0.3s ease' }}
                   className={liked ? 'animate-heart-pulse' : ''}
-                  fill={liked ? '#CF4647' : 'none'}
+                  fill={liked ? 'var(--themeColor4)' : 'none'}
                 />
                 <span>301</span>
               </button>
@@ -84,9 +91,10 @@ export default function Header() {
                 href="#contact"
                 className="hidden sm:inline-flex items-center px-4 py-1.5 text-sm font-medium rounded border tk-button transition-all duration-300"
                 style={{
-                  borderColor: '#FFD369',
-                  color: '#FFD369',
+                  borderColor: 'var(--themeColor4)',
+                  color: 'var(--themeColor4)',
                   fontFamily: 'var(--font-montserrat)',
+                  transition: 'color 0.3s ease, border-color 0.3s ease',
                 }}
               >
                 Curriculum Vitae | CV
@@ -97,7 +105,7 @@ export default function Header() {
                 className="md:hidden p-2 relative z-[101]"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
-                style={{ color: '#FFD369' }}
+                style={{ color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
               >
                 <motion.div
                   animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
@@ -116,7 +124,7 @@ export default function Header() {
         {mobileMenuOpen && (
           <motion.div
             className="fixed inset-0 z-[99] md:hidden"
-            style={{ backgroundColor: 'rgba(34, 40, 49, 0.98)' }}
+            style={{ backgroundColor: 'var(--themeColor1)', transition: 'background-color 0.3s ease' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -129,8 +137,9 @@ export default function Header() {
                   href={item.href}
                   className="text-lg font-bold tracking-wider"
                   style={{
-                    color: '#FFD369',
+                    color: 'var(--themeColor4)',
                     fontFamily: 'var(--font-montserrat)',
+                    transition: 'color 0.3s ease',
                   }}
                   initial={{ opacity: 0, y: 20, scale: 0.8 }}
                   animate={{

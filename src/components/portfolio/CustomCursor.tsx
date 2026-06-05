@@ -95,8 +95,9 @@ export default function CustomCursor() {
           style={{
             width: '28px',
             height: '28px',
-            border: '2px solid #CF4647',
+            border: '2px solid var(--themeColor4)',
             backgroundColor: 'transparent',
+            transition: 'border-color 0.3s ease',
           }}
         />
       </motion.div>
@@ -121,7 +122,8 @@ export default function CustomCursor() {
           style={{
             width: '4px',
             height: '4px',
-            backgroundColor: isHovering ? 'rgba(207, 70, 71, 0.3)' : '#CF4647',
+            backgroundColor: isHovering ? 'var(--themeColor4)' : 'var(--themeColor4)',
+            opacity: isHovering ? 0.3 : 1,
             transition: 'background-color 0.2s',
           }}
         />

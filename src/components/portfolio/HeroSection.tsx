@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import DencryptText from './DencryptText';
 
 export default function HeroSection() {
@@ -14,7 +13,7 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 overflow-hidden"
+      className="view-element relative min-h-screen flex items-center justify-center px-6 sm:px-12 lg:px-24 overflow-hidden"
     >
       {/* Background decorative circle */}
       <div
@@ -23,11 +22,13 @@ export default function HeroSection() {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255,211,105,0.08) 0%, rgba(255,211,105,0.02) 50%, transparent 70%)',
+          background: `radial-gradient(circle, var(--themeColor2) 0%, transparent 70%)`,
+          opacity: 0.08,
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           pointerEvents: 'none',
+          transition: 'background 0.3s ease',
         }}
       />
 
@@ -38,10 +39,12 @@ export default function HeroSection() {
           width: '200px',
           height: '200px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(207,70,71,0.06) 0%, transparent 70%)',
+          background: `radial-gradient(circle, var(--themeColor4) 0%, transparent 70%)`,
+          opacity: 0.06,
           top: '20%',
           right: '15%',
           animationDelay: '1s',
+          transition: 'background 0.3s ease',
         }}
       />
 
@@ -52,17 +55,18 @@ export default function HeroSection() {
           data-aos-delay="0"
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
           style={{
-            backgroundColor: 'rgba(100, 255, 218, 0.1)',
-            border: '1px solid rgba(100, 255, 218, 0.3)',
+            backgroundColor: 'var(--themeColor2)',
+            opacity: 0.9,
+            transition: 'background-color 0.3s ease',
           }}
         >
           <span
             className="w-2 h-2 rounded-full animate-pulse-custom"
-            style={{ backgroundColor: '#64FFDA' }}
+            style={{ backgroundColor: 'var(--themeColor4)', transition: 'background-color 0.3s ease' }}
           />
           <span
             className="text-sm font-medium"
-            style={{ color: '#64FFDA', fontFamily: 'var(--font-quicksand)' }}
+            style={{ color: 'var(--themeColor3)', fontFamily: 'var(--font-quicksand)', transition: 'color 0.3s ease' }}
           >
             Available for work
           </span>
@@ -73,8 +77,9 @@ export default function HeroSection() {
           <p
             className="text-lg sm:text-xl mb-2"
             style={{
-              color: '#a8b2d1',
+              color: 'var(--themeColor3)',
               fontFamily: 'var(--font-quicksand)',
+              transition: 'color 0.3s ease',
             }}
           >
             G&apos;day, I&apos;m
@@ -88,8 +93,8 @@ export default function HeroSection() {
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
           style={{ fontFamily: 'var(--font-montserrat)' }}
         >
-          <span style={{ color: '#F8F6F6' }}>Parth </span>
-          <span style={{ color: '#FFD369' }}>Boricha,</span>
+          <span style={{ color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}>Parth </span>
+          <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Boricha,</span>
         </h1>
 
         {/* Subtitle with dencrypt effect */}
@@ -103,14 +108,15 @@ export default function HeroSection() {
           data-aos-delay="400"
           className="text-base sm:text-lg max-w-2xl mb-8 leading-relaxed"
           style={{
-            color: '#a8b2d1',
+            color: 'var(--themeColor3)',
             fontFamily: 'var(--font-quicksand)',
+            transition: 'color 0.3s ease',
           }}
         >
           I specialize in building exceptional digital experiences. From{' '}
           {services.map((s, i) => (
             <span key={s}>
-              <span style={{ color: '#FFD369' }}>{s}</span>
+              <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>{s}</span>
               {i < services.length - 1 && ' — '}
             </span>
           ))}
@@ -125,9 +131,10 @@ export default function HeroSection() {
           className="tk-button inline-flex items-center gap-2 px-8 py-3 rounded font-semibold text-base animate-glow"
           style={{
             fontFamily: 'var(--font-montserrat)',
-            border: '2px solid #FFD369',
-            color: '#FFD369',
+            border: '2px solid var(--themeColor4)',
+            color: 'var(--themeColor4)',
             backgroundColor: 'transparent',
+            transition: 'color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease',
           }}
         >
           Contact me!

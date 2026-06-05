@@ -65,8 +65,8 @@ export default function DencryptText() {
 
   return (
     <h2
-      className="dencrypt-text text-2xl sm:text-3xl md:text-4xl font-bold shimmer-text"
-      style={{ fontFamily: 'var(--font-montserrat)', minHeight: '1.5em' }}
+      className="dencrypt-text text-2xl sm:text-3xl md:text-4xl font-bold"
+      style={{ fontFamily: 'var(--font-montserrat)', minHeight: '1.5em', color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}
     >
       {result}
     </h2>

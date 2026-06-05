@@ -28,9 +28,15 @@ const certifications: Certification[] = [
 
 export default function CertificationsSection() {
   return (
-    <section id="certifications" className="py-0">
-      {/* Dark top background */}
-      <div style={{ height: '400px', backgroundColor: '#1B2028' }} />
+    <section id="certifications" className="view-element py-0">
+      {/* Dark top background strip */}
+      <div
+        style={{
+          height: '400px',
+          backgroundColor: 'var(--themeColor3)',
+          transition: 'background-color 0.3s ease',
+        }}
+      />
 
       {/* Certifications content overlapping */}
       <div className="px-6 sm:px-12 lg:px-24 -mt-80 relative z-10 pb-24">
@@ -39,10 +45,11 @@ export default function CertificationsSection() {
           <div className="mb-16" data-aos="zoom-in-right">
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold"
-              style={{ fontFamily: 'var(--font-montserrat)' }}
+              style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
             >
-              Licenses & <span style={{ color: '#FFD369' }}>Certifications</span>
+              Licenses & <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Certifications</span>
             </h2>
+            <div className="section-title-line" />
           </div>
 
           {/* Certifications */}
@@ -57,12 +64,14 @@ export default function CertificationsSection() {
                 <Award
                   size={28}
                   className="cert-icon mb-4"
-                  style={{ color: '#222831' }}
+                  style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}
                 />
                 <h3
                   className="cert-title text-base font-bold mb-2"
                   style={{
                     fontFamily: 'var(--font-montserrat)',
+                    color: 'var(--themeColor4)',
+                    transition: 'color 0.3s ease',
                   }}
                 >
                   {cert.title}
@@ -71,6 +80,8 @@ export default function CertificationsSection() {
                   className="text-sm mb-1"
                   style={{
                     fontFamily: 'var(--font-quicksand)',
+                    color: 'var(--themeColor4)',
+                    transition: 'color 0.3s ease',
                   }}
                 >
                   {cert.issuer}
@@ -79,6 +90,8 @@ export default function CertificationsSection() {
                   className="text-xs opacity-70"
                   style={{
                     fontFamily: 'var(--font-source-code-pro)',
+                    color: 'var(--themeColor3)',
+                    transition: 'color 0.3s ease',
                   }}
                 >
                   {cert.date}

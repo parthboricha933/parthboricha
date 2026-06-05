@@ -42,11 +42,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --color-theme1: #F8F6F6;
-  --color-theme2: #FFD369;
-  --color-theme3: #2A363B;
-  --color-theme4: #CF4647;
-  --color-bg: #222831;
+  --color-theme1: var(--themeColor1);
+  --color-theme2: var(--themeColor2);
+  --color-theme3: var(--themeColor3);
+  --color-theme4: var(--themeColor4);
 }
 
 :root {
@@ -82,11 +81,11 @@
   --sidebar-accent-foreground: #F8F6F6;
   --sidebar-border: rgba(248, 246, 246, 0.1);
   --sidebar-ring: #FFD369;
+  /* Theme colors - changed on scroll */
+  --themeColor1: #F8F6F6;
+  --themeColor2: #F5D061;
   --themeColor3: #2A363B;
   --themeColor4: #CF4647;
-  --themeColor2: #FFD369;
-  --themeColor1: #F8F6F6;
-  --bgColor: #222831;
 }
 
 @layer base {
@@ -97,8 +96,9 @@
     scroll-behavior: smooth;
   }
   body {
-    background-color: #222831;
-    color: #F8F6F6;
+    background-color: var(--themeColor1);
+    color: var(--themeColor3);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   @media (pointer: fine) {
     body.custom-cursor-active {
@@ -110,25 +110,27 @@
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - uses theme colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #222831;
+  background: var(--themeColor1);
+  transition: background-color 0.3s ease;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A363B;
+  background: var(--themeColor2);
   border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFD369;
+  background: var(--themeColor4);
 }
 
 /* Selection */
 ::selection {
-  background: rgba(255, 211, 105, 0.3);
-  color: #F8F6F6;
+  background: rgba(245, 208, 97, 0.3);
+  color: var(--themeColor3);
 }
 
 /* ==============================
@@ -279,7 +281,7 @@
   left: 0;
   right: 0;
   height: 0;
-  border-top: 1px dashed #CF4647;
+  border-top: 1px dashed var(--themeColor4);
   opacity: 0.5;
   transform: scaleX(0);
   transition: transform 0.1s linear;
@@ -289,7 +291,7 @@
   top: 0;
   bottom: 0;
   width: 0;
-  border-left: 1px dashed #CF4647;
+  border-left: 1px dashed var(--themeColor4);
   opacity: 0.5;
   transform: scaleY(0);
   transition: transform 0.1s linear;
@@ -315,10 +317,11 @@
 }
 .golden-blob {
   border-radius: 50%;
-  background: #FFD369;
+  background: var(--themeColor2);
   opacity: 0.6;
   position: absolute;
   will-change: transform;
+  transition: background-color 0.3s ease;
 }
 .golden-blob::after {
   content: '';
@@ -345,7 +348,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
-  transition: color 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease;
+  transition: color 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease, background-color 0.3s ease;
 }
 .tk-button::after {
   content: '';
@@ -354,7 +357,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #FFD369;
+  background: var(--themeColor4);
   transform: translateX(-101%);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: -1;
@@ -363,7 +366,7 @@
   transform: translateX(0);
 }
 .tk-button:hover {
-  color: #222831 !important;
+  color: var(--themeColor1) !important;
 }
 
 /* ==============================
@@ -371,6 +374,8 @@
    ============================== */
 .dencrypt-text {
   font-family: var(--font-montserrat);
+  color: var(--themeColor4);
+  transition: color 0.3s ease;
 }
 
 /* ==============================
@@ -472,7 +477,7 @@
 .project-card {
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 .project-card:hover {
   transform: translateY(-5px);
@@ -549,16 +554,16 @@
 }
 
 /* ==============================
-   CERTIFICATION CARD GOLDEN BG
+   CERTIFICATION CARD - uses theme variables
    ============================== */
 .cert-card-gold {
-  background: #FFD369;
-  color: #222831;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: var(--themeColor2);
+  color: var(--themeColor3);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, color 0.3s ease;
 }
 .cert-card-gold:hover .cert-title,
 .cert-card-gold:hover .cert-icon {
-  color: #2A363B;
+  color: var(--themeColor4);
 }
 
 /* ==============================
@@ -588,25 +593,17 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.view-demo-btn::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #CF4647;
-  transform: translateX(-101%);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.view-demo-btn:hover::after {
-  transform: translateX(0);
+  background: var(--themeColor4);
+  color: var(--themeColor1);
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .view-demo-btn:hover {
-  transform: translateX(8px);
-  color: #CF4647;
+  transform: translateX(4px);
+  background: transparent;
+  color: var(--themeColor4);
+  box-shadow: inset 0 0 0 2px var(--themeColor4);
 }
 
 /* ==============================
@@ -619,7 +616,18 @@
   z-index: 9998;
   height: 5px;
   background: var(--themeColor3);
-  transition: width 0.1s cubic-bezier(0.85, 0.58, 0, 1.46);
+  transition: width 0.1s cubic-bezier(0.85, 0.58, 0, 1.46), background-color 0.3s ease;
+}
+
+/* ==============================
+   SECTION TITLE LINE
+   ============================== */
+.section-title-line {
+  width: 90%;
+  height: 2px;
+  background: var(--themeColor2);
+  margin-top: 12px;
+  transition: background-color 0.3s ease;
 }
 
 /* ==============================
@@ -715,15 +723,15 @@
   animation: glow 2s ease-in-out infinite;
 }
 
-/* Shimmer text */
+/* Shimmer text - uses theme colors */
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    #FFD369 0%,
-    #F8F6F6 25%,
-    #FFD369 50%,
-    #F8F6F6 75%,
-    #FFD369 100%
+    var(--themeColor4) 0%,
+    var(--themeColor3) 25%,
+    var(--themeColor4) 50%,
+    var(--themeColor3) 75%,
+    var(--themeColor4) 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -739,21 +747,23 @@
   transform-style: preserve-3d;
 }
 .nav-letter:hover {
-  color: #CF4647;
+  color: var(--themeColor4);
   transform: rotateY(20deg);
 }
 
-/* Browser mockup */
+/* Browser mockup - uses theme variables */
 .browser-frame {
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(248, 246, 246, 0.1);
+  border: 1px solid var(--themeColor2);
+  transition: border-color 0.3s ease;
 }
 .browser-dots {
   display: flex;
   gap: 6px;
   padding: 10px 12px;
-  background: #1B2028;
+  background: var(--themeColor2);
+  transition: background-color 0.3s ease;
 }
 .browser-dot {
   width: 10px;
@@ -761,26 +771,30 @@
   border-radius: 50%;
 }
 .browser-address {
-  background: #1B2028;
+  background: var(--themeColor2);
   padding: 6px 12px 10px;
+  transition: background-color 0.3s ease;
 }
 .browser-address-bar {
-  background: #2A363B;
+  background: var(--themeColor1);
   border-radius: 4px;
   padding: 4px 10px;
   font-family: var(--font-source-code-pro);
   font-size: 11px;
-  color: #a8b2d1;
+  color: var(--themeColor3);
+  opacity: 0.7;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .browser-content {
-  background: #2A363B;
+  background: var(--themeColor1);
   padding: 20px;
+  transition: background-color 0.3s ease;
 }
 
-/* Featured badge golden */
+/* Featured badge - uses theme variables */
 .featured-badge {
-  background: #FFD369;
-  color: #222831;
+  background: var(--themeColor4);
+  color: var(--themeColor1);
   font-weight: 700;
   font-size: 11px;
   padding: 4px 14px;
@@ -790,11 +804,12 @@
   font-family: var(--font-montserrat);
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Contact input focus */
 .contact-input:focus {
-  border-color: #CF4647 !important;
+  border-color: var(--themeColor4) !important;
   outline: none;
   box-shadow: 0 0 0 2px rgba(207, 70, 71, 0.2);
 }
@@ -808,37 +823,46 @@
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--themeColor2);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   font-size: 13px;
-  color: #a8b2d1;
+  color: var(--themeColor3);
 }
 .like-btn-pill:hover {
   background: rgba(207, 70, 71, 0.15);
-  border-color: rgba(207, 70, 71, 0.3);
+  border-color: var(--themeColor4);
 }
 .like-btn-pill.liked {
-  color: #CF4647;
+  color: var(--themeColor4);
   background: rgba(207, 70, 71, 0.1);
-  border-color: rgba(207, 70, 71, 0.3);
+  border-color: var(--themeColor4);
 }
 
-/* Language tag hover fill */
+/* Language tag hover fill - uses theme variables */
 .lang-tag {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid var(--themeColor4);
+  color: var(--themeColor3);
 }
 .lang-tag:hover {
-  background-color: #CF4647 !important;
-  color: #FFD369 !important;
-  border-color: #CF4647 !important;
+  background-color: var(--themeColor4) !important;
+  color: var(--themeColor2) !important;
+  border-color: var(--themeColor4) !important;
 }
 
 /* Github stat card hover */
 .github-stat-card {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: transparent;
+  border: 1px solid var(--themeColor2);
 }
 .github-stat-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme transition utility for all themed elements */
+.theme-transition {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }

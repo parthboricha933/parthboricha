@@ -28,7 +28,7 @@ const socialLinks = [
 export default function SocialSidebar() {
   return (
     <div className="fixed left-6 bottom-0 z-50 hidden lg:flex flex-col items-center gap-4">
-      {socialLinks.map((link, i) => {
+      {socialLinks.map((link) => {
         const Icon = link.icon;
         return (
           <a
@@ -38,12 +38,12 @@ export default function SocialSidebar() {
             rel="noopener noreferrer"
             aria-label={link.label}
             className="transition-all duration-300 hover:-translate-y-1"
-            style={{ color: '#2A363B' }}
+            style={{ color: 'var(--themeColor3)', transition: 'color 0.3s ease, transform 0.3s ease' }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.color = '#CF4647';
+              (e.currentTarget as HTMLElement).style.color = 'var(--themeColor4)';
             }}
             onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.color = '#a8b2d1';
+              (e.currentTarget as HTMLElement).style.color = 'var(--themeColor3)';
             }}
           >
             <Icon size={20} />
@@ -54,7 +54,7 @@ export default function SocialSidebar() {
       {/* Connecting line */}
       <div
         className="w-px h-20"
-        style={{ backgroundColor: '#a8b2d1' }}
+        style={{ backgroundColor: 'var(--themeColor3)', opacity: 0.3, transition: 'background-color 0.3s ease' }}
       />
 
       {/* Email rotated */}
@@ -62,16 +62,17 @@ export default function SocialSidebar() {
         href="mailto:parthboricha.dev@gmail.com"
         className="text-xs tracking-widest"
         style={{
-          color: '#a8b2d1',
+          color: 'var(--themeColor3)',
           writingMode: 'vertical-rl',
           fontFamily: 'var(--font-source-code-pro)',
           textDecoration: 'none',
+          transition: 'color 0.3s ease',
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).style.color = '#CF4647';
+          (e.currentTarget as HTMLElement).style.color = 'var(--themeColor4)';
         }}
         onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).style.color = '#a8b2d1';
+          (e.currentTarget as HTMLElement).style.color = 'var(--themeColor3)';
         }}
       >
         parthboricha.dev@gmail.com
@@ -80,7 +81,7 @@ export default function SocialSidebar() {
       {/* Bottom line */}
       <div
         className="w-px h-16"
-        style={{ backgroundColor: '#a8b2d1' }}
+        style={{ backgroundColor: 'var(--themeColor3)', opacity: 0.3, transition: 'background-color 0.3s ease' }}
       />
     </div>
   );

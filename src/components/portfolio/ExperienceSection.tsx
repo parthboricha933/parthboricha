@@ -45,7 +45,7 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="py-24 px-6 sm:px-12 lg:px-24"
+      className="view-element py-24 px-6 sm:px-12 lg:px-24"
       data-aos="fade-down-left"
     >
       <div className="max-w-6xl mx-auto">
@@ -53,10 +53,11 @@ export default function ExperienceSection() {
         <div className="mb-16" data-aos="zoom-in-right">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: 'var(--font-montserrat)' }}
+            style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
           >
-            Where I&apos;ve <span style={{ color: '#FFD369' }}>Worked</span>
+            Where I&apos;ve <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Worked</span>
           </h2>
+          <div className="section-title-line" />
         </div>
 
         <div className="flex flex-col md:flex-row gap-2 md:gap-0">
@@ -69,12 +70,13 @@ export default function ExperienceSection() {
                 className="px-5 py-3 text-sm font-semibold whitespace-nowrap text-left transition-all duration-300"
                 style={{
                   fontFamily: 'var(--font-montserrat)',
-                  backgroundColor: activeTab === i ? '#FFD369' : 'transparent',
-                  color: activeTab === i ? '#222831' : '#a8b2d1',
+                  backgroundColor: activeTab === i ? 'var(--themeColor4)' : 'transparent',
+                  color: activeTab === i ? 'var(--themeColor1)' : 'var(--themeColor3)',
                   borderLeft: '3px solid',
-                  borderColor: activeTab === i ? '#FFD369' : 'rgba(248,246,246,0.1)',
+                  borderColor: activeTab === i ? 'var(--themeColor4)' : 'var(--themeColor2)',
                   borderRadius: 0,
                   transitionTimingFunction: 'cubic-bezier(0.645,0.045,0.355,1)',
+                  transition: 'color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease',
                 }}
               >
                 {exp.company}
@@ -96,8 +98,9 @@ export default function ExperienceSection() {
               <h3
                 className="text-xl sm:text-2xl font-bold mb-2"
                 style={{
-                  color: '#FFD369',
+                  color: 'var(--themeColor3)',
                   fontFamily: 'var(--font-montserrat)',
+                  transition: 'color 0.3s ease',
                 }}
               >
                 {experiences[activeTab].title}
@@ -105,8 +108,10 @@ export default function ExperienceSection() {
               <p
                 className="text-sm mb-6"
                 style={{
-                  color: '#a8b2d1',
+                  color: 'var(--themeColor3)',
                   fontFamily: 'var(--font-source-code-pro)',
+                  opacity: 0.7,
+                  transition: 'color 0.3s ease',
                 }}
               >
                 {experiences[activeTab].duration}
@@ -117,8 +122,9 @@ export default function ExperienceSection() {
                     key={i}
                     className="flex items-start gap-3 text-sm sm:text-base leading-relaxed"
                     style={{
-                      color: '#a8b2d1',
+                      color: 'var(--themeColor3)',
                       fontFamily: 'var(--font-quicksand)',
+                      transition: 'color 0.3s ease',
                     }}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -129,7 +135,7 @@ export default function ExperienceSection() {
                   >
                     <span
                       className="shrink-0 mt-1.5"
-                      style={{ color: '#FFD369', fontSize: '10px' }}
+                      style={{ color: 'var(--themeColor4)', fontSize: '10px', transition: 'color 0.3s ease' }}
                     >
                       &#9656;
                     </span>

@@ -55,21 +55,24 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
         isEven ? 'review-card-right' : 'review-card-left'
       } ${isInView ? 'in-view' : ''}`}
       style={{
-        backgroundColor: '#2A363B',
-        border: '1px solid rgba(248,246,246,0.05)',
+        backgroundColor: isEven ? 'var(--themeColor1)' : 'var(--themeColor2)',
+        color: isEven ? 'var(--themeColor3)' : 'var(--themeColor1)',
+        border: '1px solid var(--themeColor2)',
         maxWidth: '90%',
+        transition: 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease',
       }}
     >
       <Quote
         size={28}
         className="mb-4"
-        style={{ color: isEven ? '#FFD369' : '#CF4647', opacity: 0.6 }}
+        style={{ color: 'var(--themeColor4)', opacity: 0.6, transition: 'color 0.3s ease' }}
       />
       <p
         className="text-sm leading-relaxed mb-6 italic"
         style={{
-          color: isEven ? '#FFD369' : '#CF4647',
+          color: isEven ? 'var(--themeColor3)' : 'var(--themeColor1)',
           fontFamily: 'var(--font-quicksand)',
+          transition: 'color 0.3s ease',
         }}
       >
         {review.text}
@@ -78,8 +81,9 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
         <p
           className="font-bold text-sm"
           style={{
-            color: '#F8F6F6',
+            color: 'var(--themeColor3)',
             fontFamily: 'var(--font-montserrat)',
+            transition: 'color 0.3s ease',
           }}
         >
           {review.name}
@@ -87,8 +91,9 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
         <p
           className="text-xs"
           style={{
-            color: '#a8b2d1',
+            color: 'var(--themeColor4)',
             fontFamily: 'var(--font-quicksand)',
+            transition: 'color 0.3s ease',
           }}
         >
           {review.company}
@@ -100,16 +105,17 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
 
 export default function ReviewsSection() {
   return (
-    <section id="reviews" className="py-24 px-6 sm:px-12 lg:px-24">
+    <section id="reviews" className="view-element py-24 px-6 sm:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
         <div className="mb-16" data-aos="fade-up">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: 'var(--font-montserrat)' }}
+            style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
           >
-            What Clients <span style={{ color: '#FFD369' }}>Say</span>
+            What Clients <span style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}>Say</span>
           </h2>
+          <div className="section-title-line" />
         </div>
 
         {/* Reviews - alternating flex layout */}

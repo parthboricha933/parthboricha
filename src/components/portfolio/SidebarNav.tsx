@@ -55,10 +55,12 @@ export default function SidebarNav() {
             <span
               className="w-2 h-2 rounded-full transition-all duration-300"
               style={{
-                backgroundColor: isActive ? '#FFD369' : 'transparent',
-                border: isActive ? 'none' : '1px solid rgba(248,246,246,0.3)',
+                backgroundColor: isActive ? 'var(--themeColor4)' : 'transparent',
+                border: isActive ? 'none' : '1px solid var(--themeColor3)',
+                opacity: isActive ? 1 : 0.3,
                 transform: isActive ? 'scale(1.3)' : 'scale(1)',
                 transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+                transition: 'background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease',
               }}
             />
             {/* 3D Letter navigation */}
@@ -66,8 +68,10 @@ export default function SidebarNav() {
               className="text-xs tracking-[0.2em] font-bold flex"
               style={{
                 fontFamily: 'var(--font-montserrat)',
-                color: isActive ? '#FFD369' : 'rgba(248,246,246,0.3)',
+                color: isActive ? 'var(--themeColor4)' : 'var(--themeColor3)',
+                opacity: isActive ? 1 : 0.3,
                 perspective: '200px',
+                transition: 'color 0.3s ease',
               }}
             >
               {section.label.split('').map((letter, idx) => (
@@ -89,6 +93,12 @@ export default function SidebarNav() {
           </button>
         );
       })}
+
+      {/* Connecting line */}
+      <div
+        className="w-px h-12"
+        style={{ backgroundColor: 'var(--themeColor3)', opacity: 0.3, transition: 'background-color 0.3s ease' }}
+      />
     </nav>
   );
 }
