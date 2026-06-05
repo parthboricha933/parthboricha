@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const techStack = [
@@ -22,37 +22,87 @@ const techStack = [
   'Framer Motion',
 ];
 
-export default function AboutSection() {
+// Kubernetes wheel SVG
+function KubernetesIcon({ scrollY }: { scrollY: number }) {
+  const offset = scrollY * 0.15;
   return (
-    <section id="myself" className="py-24 px-6 sm:px-12 lg:px-24">
-      <div className="max-w-6xl mx-auto">
+    <svg
+      className="k8s-icon"
+      width="300"
+      height="300"
+      viewBox="0 0 100 100"
+      fill="#CF4647"
+      style={{
+        top: '10%',
+        right: '-5%',
+        transform: `translateY(${offset}px) rotate(${scrollY * 0.05}deg)`,
+      }}
+    >
+      <path d="M50 5L90 27.5V72.5L50 95L10 72.5V27.5L50 5Z" fill="none" stroke="#CF4647" strokeWidth="1.5" />
+      <circle cx="50" cy="50" r="12" fill="none" stroke="#CF4647" strokeWidth="1.5" />
+      <circle cx="50" cy="22" r="4" fill="#CF4647" />
+      <circle cx="74" cy="36" r="4" fill="#CF4647" />
+      <circle cx="74" cy="64" r="4" fill="#CF4647" />
+      <circle cx="50" cy="78" r="4" fill="#CF4647" />
+      <circle cx="26" cy="64" r="4" fill="#CF4647" />
+      <circle cx="26" cy="36" r="4" fill="#CF4647" />
+      <line x1="50" y1="38" x2="50" y2="26" stroke="#CF4647" strokeWidth="1" />
+      <line x1="61" y1="44" x2="72" y2="38" stroke="#CF4647" strokeWidth="1" />
+      <line x1="61" y1="56" x2="72" y2="62" stroke="#CF4647" strokeWidth="1" />
+      <line x1="50" y1="62" x2="50" y2="74" stroke="#CF4647" strokeWidth="1" />
+      <line x1="39" y1="56" x2="28" y2="62" stroke="#CF4647" strokeWidth="1" />
+      <line x1="39" y1="44" x2="28" y2="38" stroke="#CF4647" strokeWidth="1" />
+    </svg>
+  );
+}
+
+export default function AboutSection() {
+  const [scrollY, setScrollY] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (sectionRef.current) {
+        const rect = sectionRef.current.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          setScrollY(window.scrollY);
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      id="myself"
+      className="py-24 px-6 sm:px-12 lg:px-24 relative overflow-hidden"
+      data-aos="fade-down-left"
+    >
+      {/* Kubernetes parallax icon */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <KubernetesIcon scrollY={scrollY} />
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section title */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mb-16" data-aos="zoom-in-right">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ fontFamily: 'var(--font-montserrat)' }}
           >
             About <span style={{ color: '#FFD369' }}>Me</span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-5 gap-12 items-start">
           {/* Text content */}
-          <motion.div
-            className="md:col-span-3"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="md:col-span-3">
             <p
               className="text-base sm:text-lg leading-relaxed mb-6"
+              data-aos="zoom-in-left"
+              data-aos-delay="0"
               style={{
                 color: '#a8b2d1',
                 fontFamily: 'var(--font-quicksand)',
@@ -69,6 +119,8 @@ export default function AboutSection() {
 
             <p
               className="text-base sm:text-lg leading-relaxed mb-6"
+              data-aos="zoom-in-left"
+              data-aos-delay="100"
               style={{
                 color: '#a8b2d1',
                 fontFamily: 'var(--font-quicksand)',
@@ -82,6 +134,8 @@ export default function AboutSection() {
 
             <p
               className="text-base sm:text-lg leading-relaxed mb-8"
+              data-aos="zoom-in-left"
+              data-aos-delay="200"
               style={{
                 color: '#a8b2d1',
                 fontFamily: 'var(--font-quicksand)',
@@ -101,9 +155,11 @@ export default function AboutSection() {
               Tech Stack
             </h3>
             <div className="grid grid-cols-2 gap-x-8 gap-y-2">
-              {techStack.map((tech) => (
+              {techStack.map((tech, i) => (
                 <div
                   key={tech}
+                  data-aos="zoom-in-left"
+                  data-aos-delay={i * 30}
                   className="flex items-center gap-2 text-sm"
                   style={{
                     color: '#a8b2d1',
@@ -115,20 +171,18 @@ export default function AboutSection() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Profile photo */}
-          <motion.div
+          <div
             className="md:col-span-2 flex justify-center"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6 }}
+            data-aos="zoom-in-right"
+            data-aos-delay="100"
           >
-            <div className="relative">
-              {/* Decorative border */}
+            <div className="relative profile-img-wrapper">
+              {/* Decorative border offset */}
               <div
-                className="absolute -top-3 -left-3 w-full h-full rounded-lg"
+                className="profile-border-offset absolute -top-3 -left-3 w-full h-full rounded-lg"
                 style={{ border: '2px solid #FFD369', zIndex: 0 }}
               />
               <div
@@ -154,7 +208,7 @@ export default function AboutSection() {
                 }}
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

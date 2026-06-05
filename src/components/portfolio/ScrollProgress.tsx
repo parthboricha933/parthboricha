@@ -20,11 +20,9 @@ export default function ScrollProgress() {
 
   return (
     <div
-      className="fixed top-0 left-0 z-[9998] h-[3px]"
+      className="scroll-progress-bar"
       style={{
         width: `${scrollPercent}%`,
-        backgroundColor: '#FFD369',
-        transition: 'width 0.1s linear',
       }}
     />
   );

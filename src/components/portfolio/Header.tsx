@@ -19,6 +19,7 @@ const navItems = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,21 +63,26 @@ export default function Header() {
                 <Eye size={16} style={{ color: '#FFD369' }} />
                 <span>1.1K</span>
               </div>
-              <div className="flex items-center gap-1.5 text-sm" style={{ color: '#a8b2d1' }}>
+              <button
+                className={`like-btn-pill ${liked ? 'liked' : ''}`}
+                onClick={() => setLiked(!liked)}
+                aria-label="Like"
+              >
                 <Heart
                   size={16}
-                  style={{ color: '#CF4647' }}
-                  className="animate-heartbeat"
+                  style={{ color: liked ? '#CF4647' : '#a8b2d1' }}
+                  className={liked ? 'animate-heart-pulse' : ''}
+                  fill={liked ? '#CF4647' : 'none'}
                 />
                 <span>301</span>
-              </div>
+              </button>
             </div>
 
             {/* Right: CV Button + Hamburger */}
             <div className="flex items-center gap-3">
               <a
                 href="#contact"
-                className="hidden sm:inline-flex items-center px-4 py-1.5 text-sm font-medium rounded border transition-all duration-300 hover:bg-[#FFD369] hover:text-[#222831] hover:border-[#FFD369]"
+                className="hidden sm:inline-flex items-center px-4 py-1.5 text-sm font-medium rounded border tk-button transition-all duration-300"
                 style={{
                   borderColor: '#FFD369',
                   color: '#FFD369',
@@ -88,12 +94,17 @@ export default function Header() {
 
               {/* Mobile hamburger */}
               <button
-                className="md:hidden p-2"
+                className="md:hidden p-2 relative z-[101]"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
                 style={{ color: '#FFD369' }}
               >
-                {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                <motion.div
+                  animate={{ rotate: mobileMenuOpen ? 90 : 0 }}
+                  transition={{ duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+                >
+                  {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </motion.div>
               </button>
             </div>
           </div>
@@ -121,9 +132,18 @@ export default function Header() {
                     color: '#FFD369',
                     fontFamily: 'var(--font-montserrat)',
                   }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
+                  initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    rotate: mobileMenuOpen ? 0 : -10,
+                  }}
+                  transition={{
+                    delay: i * 0.05,
+                    duration: 0.4,
+                    ease: [0.34, 1.56, 0.64, 1],
+                  }}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}

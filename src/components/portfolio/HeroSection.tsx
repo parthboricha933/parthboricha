@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import DencryptText from './DencryptText';
 
 export default function HeroSection() {
   const services = [
@@ -46,15 +47,14 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-4xl w-full">
         {/* Available badge */}
-        <motion.div
+        <div
+          data-aos="fade-up"
+          data-aos-delay="0"
           className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6"
           style={{
             backgroundColor: 'rgba(100, 255, 218, 0.1)',
             border: '1px solid rgba(100, 255, 218, 0.3)',
           }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
         >
           <span
             className="w-2 h-2 rounded-full animate-pulse-custom"
@@ -66,14 +66,10 @@ export default function HeroSection() {
           >
             Available for work
           </span>
-        </motion.div>
+        </div>
 
         {/* Greeting */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
+        <div data-aos="fade-up" data-aos-delay="100">
           <p
             className="text-lg sm:text-xl mb-2"
             style={{
@@ -83,41 +79,33 @@ export default function HeroSection() {
           >
             G&apos;day, I&apos;m
           </p>
-        </motion.div>
+        </div>
 
         {/* Name */}
-        <motion.h1
+        <h1
+          data-aos="fade-up"
+          data-aos-delay="200"
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4"
           style={{ fontFamily: 'var(--font-montserrat)' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
         >
           <span style={{ color: '#F8F6F6' }}>Parth </span>
           <span style={{ color: '#FFD369' }}>Boricha,</span>
-        </motion.h1>
+        </h1>
 
-        {/* Subtitle with shimmer */}
-        <motion.h2
-          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 shimmer-text"
-          style={{ fontFamily: 'var(--font-montserrat)' }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          Full Stack Web Developer
-        </motion.h2>
+        {/* Subtitle with dencrypt effect */}
+        <div data-aos="fade-up" data-aos-delay="300" className="mb-6">
+          <DencryptText />
+        </div>
 
         {/* Description */}
-        <motion.p
+        <p
+          data-aos="fade-up"
+          data-aos-delay="400"
           className="text-base sm:text-lg max-w-2xl mb-8 leading-relaxed"
           style={{
             color: '#a8b2d1',
             fontFamily: 'var(--font-quicksand)',
           }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
         >
           I specialize in building exceptional digital experiences. From{' '}
           {services.map((s, i) => (
@@ -127,32 +115,23 @@ export default function HeroSection() {
             </span>
           ))}
           , I bring ideas to life with clean code and modern technologies.
-        </motion.p>
+        </p>
 
-        {/* CTA Button */}
-        <motion.a
+        {/* CTA Button with bouncy sweep */}
+        <a
           href="#contact"
-          className="inline-flex items-center gap-2 px-8 py-3 rounded font-semibold text-base transition-all duration-300 hover:shadow-lg animate-glow"
+          data-aos="fade-up"
+          data-aos-delay="500"
+          className="tk-button inline-flex items-center gap-2 px-8 py-3 rounded font-semibold text-base animate-glow"
           style={{
             fontFamily: 'var(--font-montserrat)',
             border: '2px solid #FFD369',
             color: '#FFD369',
             backgroundColor: 'transparent',
           }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.backgroundColor = '#FFD369';
-            (e.currentTarget as HTMLElement).style.color = '#222831';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-            (e.currentTarget as HTMLElement).style.color = '#FFD369';
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
         >
           Contact me!
-        </motion.a>
+        </a>
       </div>
     </section>
   );

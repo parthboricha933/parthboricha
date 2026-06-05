@@ -33,7 +33,6 @@ export default function CustomCursor() {
     const handleHoverStart = () => setIsHovering(true);
     const handleHoverEnd = () => setIsHovering(false);
 
-    // Detect hoverable elements
     const addHoverListeners = () => {
       const hoverables = document.querySelectorAll('a, button, [role="button"], input, textarea, select');
       hoverables.forEach((el) => {
@@ -45,7 +44,6 @@ export default function CustomCursor() {
 
     const hoverables = addHoverListeners();
 
-    // Re-add listeners periodically for dynamically added elements
     const interval = setInterval(() => {
       hoverables.forEach((el) => {
         el.removeEventListener('mouseenter', handleHoverStart);
@@ -76,13 +74,14 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Outer circle - follows with delay */}
+      {/* Outer circle - follows with delay, disappears on hover */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block"
         animate={{
-          x: mousePos.x - (isHovering ? 20 : 14),
-          y: mousePos.y - (isHovering ? 20 : 14),
-          scale: isHovering ? 1.5 : 1,
+          x: mousePos.x - 14,
+          y: mousePos.y - 14,
+          scale: isHovering ? 0 : 1,
+          opacity: isHovering ? 0 : 1,
         }}
         transition={{
           type: 'spring',
@@ -94,23 +93,21 @@ export default function CustomCursor() {
         <div
           className="rounded-full"
           style={{
-            width: isHovering ? '40px' : '28px',
-            height: isHovering ? '40px' : '28px',
-            border: '2px solid',
-            borderColor: isHovering ? '#FFD369' : '#CF4647',
-            backgroundColor: isHovering ? 'rgba(255, 211, 105, 0.1)' : 'transparent',
-            transition: 'width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s',
+            width: '28px',
+            height: '28px',
+            border: '2px solid #CF4647',
+            backgroundColor: 'transparent',
           }}
         />
       </motion.div>
 
-      {/* Inner dot - follows immediately */}
+      {/* Inner dot - becomes bigger on hover */}
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block"
         animate={{
-          x: mousePos.x - 2,
-          y: mousePos.y - 2,
-          scale: isHovering ? 0 : 1,
+          x: mousePos.x - (isHovering ? 20 : 2),
+          y: mousePos.y - (isHovering ? 20 : 2),
+          scale: isHovering ? 4 : 1,
         }}
         transition={{
           type: 'spring',
@@ -124,7 +121,8 @@ export default function CustomCursor() {
           style={{
             width: '4px',
             height: '4px',
-            backgroundColor: '#CF4647',
+            backgroundColor: isHovering ? 'rgba(207, 70, 71, 0.3)' : '#CF4647',
+            transition: 'background-color 0.2s',
           }}
         />
       </motion.div>

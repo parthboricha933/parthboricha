@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
 interface Project {
@@ -56,32 +55,24 @@ export default function ProjectsSection() {
     <section id="my-work" className="py-24 px-6 sm:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mb-16" data-aos="zoom-in-right">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ fontFamily: 'var(--font-montserrat)' }}
           >
             Some Things I&apos;ve <span style={{ color: '#FFD369' }}>Built</span>
           </h2>
-        </motion.div>
+        </div>
 
         {/* Projects grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <motion.div
+            <div
               key={project.title}
-              className="browser-frame transition-transform duration-300 hover:-translate-y-1"
+              className="browser-frame project-card"
+              data-aos={i % 2 === 0 ? 'fade-down-right' : 'fade-down-left'}
+              data-aos-delay={i * 50}
               style={{ backgroundColor: '#2A363B' }}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               {/* Browser top bar */}
               <div className="browser-dots">
@@ -105,15 +96,12 @@ export default function ProjectsSection() {
               </div>
 
               {/* Content */}
-              <div className="browser-content">
+              <div className="browser-content relative" style={{ zIndex: 2 }}>
                 {project.featured && (
                   <span
-                    className="inline-block text-xs font-bold px-3 py-1 rounded-full mb-3"
-                    style={{
-                      backgroundColor: 'rgba(255,211,105,0.15)',
-                      color: '#FFD369',
-                      fontFamily: 'var(--font-montserrat)',
-                    }}
+                    className="featured-badge"
+                    data-aos="fade-up"
+                    data-aos-delay={i * 50 + 100}
                   >
                     Featured Project
                   </span>
@@ -121,6 +109,8 @@ export default function ProjectsSection() {
 
                 <h3
                   className="text-lg font-bold mb-3"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 50 + 150}
                   style={{
                     color: '#F8F6F6',
                     fontFamily: 'var(--font-montserrat)',
@@ -131,6 +121,8 @@ export default function ProjectsSection() {
 
                 <p
                   className="text-sm leading-relaxed mb-4"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 50 + 200}
                   style={{
                     color: '#a8b2d1',
                     fontFamily: 'var(--font-quicksand)',
@@ -141,6 +133,8 @@ export default function ProjectsSection() {
 
                 <p
                   className="text-xs mb-4"
+                  data-aos="fade-up"
+                  data-aos-delay={i * 50 + 250}
                   style={{
                     color: '#a8b2d1',
                     fontFamily: 'var(--font-source-code-pro)',
@@ -151,22 +145,16 @@ export default function ProjectsSection() {
 
                 <a
                   href="#"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold transition-colors duration-300"
+                  className="view-demo-btn text-sm font-semibold"
                   style={{
                     color: '#FFD369',
                     fontFamily: 'var(--font-montserrat)',
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = '#CF4647';
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.color = '#FFD369';
                   }}
                 >
                   View Live Demo <ExternalLink size={14} />
                 </a>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

@@ -38,12 +38,12 @@ export default function SocialSidebar() {
             rel="noopener noreferrer"
             aria-label={link.label}
             className="transition-all duration-300 hover:-translate-y-1"
-            style={{ color: '#a8b2d1' }}
+            style={{ color: '#2A363B' }}
             onMouseEnter={(e) => {
-              (e.target as HTMLElement).style.color = '#FFD369';
+              (e.currentTarget as HTMLElement).style.color = '#CF4647';
             }}
             onMouseLeave={(e) => {
-              (e.target as HTMLElement).style.color = '#a8b2d1';
+              (e.currentTarget as HTMLElement).style.color = '#a8b2d1';
             }}
           >
             <Icon size={20} />
@@ -68,10 +68,10 @@ export default function SocialSidebar() {
           textDecoration: 'none',
         }}
         onMouseEnter={(e) => {
-          (e.target as HTMLElement).style.color = '#FFD369';
+          (e.currentTarget as HTMLElement).style.color = '#CF4647';
         }}
         onMouseLeave={(e) => {
-          (e.target as HTMLElement).style.color = '#a8b2d1';
+          (e.currentTarget as HTMLElement).style.color = '#a8b2d1';
         }}
       >
         parthboricha.dev@gmail.com

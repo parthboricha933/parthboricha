@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 const sections = [
   { id: 'home', label: 'HOME' },
@@ -59,6 +58,7 @@ export default function SidebarNav() {
                 backgroundColor: isActive ? '#FFD369' : 'transparent',
                 border: isActive ? 'none' : '1px solid rgba(248,246,246,0.3)',
                 transform: isActive ? 'scale(1.3)' : 'scale(1)',
+                transitionTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
               }}
             />
             {/* 3D Letter navigation */}
@@ -76,10 +76,10 @@ export default function SidebarNav() {
                   className="nav-letter inline-block"
                   style={{
                     transform: isActive
-                      ? `rotateY(${-8 + idx * 2}deg)`
-                      : 'rotateY(0deg)',
+                      ? `rotateY(${-15 + idx * 3}deg) translateZ(5px)`
+                      : 'rotateY(0deg) translateZ(0)',
                     transformStyle: 'preserve-3d',
-                    transitionDelay: `${idx * 15}ms`,
+                    transitionDelay: `${idx * 20}ms`,
                   }}
                 >
                   {letter}

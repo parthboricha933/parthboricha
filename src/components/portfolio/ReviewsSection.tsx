@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { useInView } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
 interface Review {
@@ -42,82 +43,79 @@ const reviews: Review[] = [
   },
 ];
 
+function ReviewCard({ review, index }: { review: Review; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isEven = index % 2 === 0;
+
+  return (
+    <div
+      ref={ref}
+      className={`p-6 rounded-lg ${
+        isEven ? 'review-card-right' : 'review-card-left'
+      } ${isInView ? 'in-view' : ''}`}
+      style={{
+        backgroundColor: '#2A363B',
+        border: '1px solid rgba(248,246,246,0.05)',
+        maxWidth: '90%',
+      }}
+    >
+      <Quote
+        size={28}
+        className="mb-4"
+        style={{ color: isEven ? '#FFD369' : '#CF4647', opacity: 0.6 }}
+      />
+      <p
+        className="text-sm leading-relaxed mb-6 italic"
+        style={{
+          color: isEven ? '#FFD369' : '#CF4647',
+          fontFamily: 'var(--font-quicksand)',
+        }}
+      >
+        {review.text}
+      </p>
+      <div>
+        <p
+          className="font-bold text-sm"
+          style={{
+            color: '#F8F6F6',
+            fontFamily: 'var(--font-montserrat)',
+          }}
+        >
+          {review.name}
+        </p>
+        <p
+          className="text-xs"
+          style={{
+            color: '#a8b2d1',
+            fontFamily: 'var(--font-quicksand)',
+          }}
+        >
+          {review.company}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function ReviewsSection() {
   return (
     <section id="reviews" className="py-24 px-6 sm:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mb-16" data-aos="fade-up">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ fontFamily: 'var(--font-montserrat)' }}
           >
             What Clients <span style={{ color: '#FFD369' }}>Say</span>
           </h2>
-        </motion.div>
+        </div>
 
-        {/* Reviews grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Reviews - alternating flex layout */}
+        <div className="flex flex-col gap-6">
           {reviews.map((review, i) => (
-            <motion.div
-              key={review.name}
-              className="p-6 rounded-lg transition-all duration-300 hover:-translate-y-1"
-              style={{
-                backgroundColor: '#2A363B',
-                border: '1px solid rgba(248,246,246,0.05)',
-              }}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,211,105,0.3)';
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(248,246,246,0.05)';
-              }}
-            >
-              <Quote
-                size={28}
-                className="mb-4"
-                style={{ color: '#FFD369', opacity: 0.5 }}
-              />
-              <p
-                className="text-sm leading-relaxed mb-6 italic"
-                style={{
-                  color: '#a8b2d1',
-                  fontFamily: 'var(--font-quicksand)',
-                }}
-              >
-                {review.text}
-              </p>
-              <div>
-                <p
-                  className="font-bold text-sm"
-                  style={{
-                    color: '#F8F6F6',
-                    fontFamily: 'var(--font-montserrat)',
-                  }}
-                >
-                  {review.name}
-                </p>
-                <p
-                  className="text-xs"
-                  style={{
-                    color: '#FFD369',
-                    fontFamily: 'var(--font-quicksand)',
-                  }}
-                >
-                  {review.company}
-                </p>
-              </div>
-            </motion.div>
+            <ReviewCard key={review.name} review={review} index={i} />
           ))}
         </div>
       </div>

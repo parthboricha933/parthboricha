@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { GitBranch, Star, GitFork, Users, Github } from 'lucide-react';
 
 const stats = [
@@ -32,35 +31,25 @@ export default function GithubSection() {
     <section id="github" className="py-24 px-6 sm:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mb-16" data-aos="fade-up">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ fontFamily: 'var(--font-montserrat)' }}
           >
             My <span style={{ color: '#FFD369' }}>GitHub</span>
           </h2>
-        </motion.div>
+        </div>
 
         {/* Stats grid */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
-        >
-          {stats.map((stat) => {
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (
               <div
                 key={stat.label}
-                className="p-6 rounded-lg text-center transition-all duration-300 hover:-translate-y-1"
+                className="github-stat-card p-6 rounded-lg text-center"
+                data-aos="zoom-in"
+                data-aos-delay={i * 50}
                 style={{
                   backgroundColor: '#2A363B',
                   border: '1px solid rgba(248,246,246,0.05)',
@@ -92,15 +81,13 @@ export default function GithubSection() {
               </div>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Language badges */}
-        <motion.div
+        <div
           className="mb-10"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
+          data-aos="fade-up"
+          data-aos-delay="100"
         >
           <h3
             className="text-lg font-bold mb-4"
@@ -112,54 +99,38 @@ export default function GithubSection() {
             {languages.map((lang) => (
               <span
                 key={lang}
-                className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300"
+                className="lang-tag px-3 py-1.5 rounded-full text-xs font-medium"
                 style={{
                   backgroundColor: 'rgba(255,211,105,0.1)',
                   color: '#FFD369',
                   fontFamily: 'var(--font-source-code-pro)',
                   border: '1px solid rgba(255,211,105,0.2)',
                 }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,211,105,0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(255,211,105,0.1)';
-                }}
               >
                 {lang}
               </span>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* GitHub profile button */}
-        <motion.a
+        <a
           href="https://github.com/parthboricha"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-sm transition-all duration-300"
+          className="tk-button inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-sm transition-all duration-300"
+          data-aos="fade-up"
+          data-aos-delay="200"
           style={{
             fontFamily: 'var(--font-montserrat)',
             border: '2px solid #FFD369',
             color: '#FFD369',
             backgroundColor: 'transparent',
           }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.backgroundColor = '#FFD369';
-            (e.currentTarget as HTMLElement).style.color = '#222831';
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent';
-            (e.currentTarget as HTMLElement).style.color = '#FFD369';
-          }}
         >
           <Github size={18} />
           View GitHub Profile
-        </motion.a>
+        </a>
       </div>
     </section>
   );

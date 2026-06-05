@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface ExperienceData {
   company: string;
@@ -43,23 +43,21 @@ export default function ExperienceSection() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section id="experience" className="py-24 px-6 sm:px-12 lg:px-24">
+    <section
+      id="experience"
+      className="py-24 px-6 sm:px-12 lg:px-24"
+      data-aos="fade-down-left"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="mb-16" data-aos="zoom-in-right">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ fontFamily: 'var(--font-montserrat)' }}
           >
             Where I&apos;ve <span style={{ color: '#FFD369' }}>Worked</span>
           </h2>
-        </motion.div>
+        </div>
 
         <div className="flex flex-col md:flex-row gap-2 md:gap-0">
           {/* Tabs */}
@@ -68,7 +66,7 @@ export default function ExperienceSection() {
               <button
                 key={exp.company}
                 onClick={() => setActiveTab(i)}
-                className="px-5 py-3 text-sm font-semibold whitespace-nowrap transition-all duration-300 text-left"
+                className="px-5 py-3 text-sm font-semibold whitespace-nowrap text-left transition-all duration-300"
                 style={{
                   fontFamily: 'var(--font-montserrat)',
                   backgroundColor: activeTab === i ? '#FFD369' : 'transparent',
@@ -76,6 +74,7 @@ export default function ExperienceSection() {
                   borderLeft: '3px solid',
                   borderColor: activeTab === i ? '#FFD369' : 'rgba(248,246,246,0.1)',
                   borderRadius: 0,
+                  transitionTimingFunction: 'cubic-bezier(0.645,0.045,0.355,1)',
                 }}
               >
                 {exp.company}
@@ -88,10 +87,11 @@ export default function ExperienceSection() {
             <motion.div
               key={activeTab}
               className="flex-1"
+              data-aos="zoom-in-right"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
+              transition={{ duration: 0.3, ease: [0.645, 0.045, 0.355, 1] }}
             >
               <h3
                 className="text-xl sm:text-2xl font-bold mb-2"
@@ -122,7 +122,10 @@ export default function ExperienceSection() {
                     }}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{
+                      delay: i * 0.05,
+                      ease: [0.645, 0.045, 0.355, 1],
+                    }}
                   >
                     <span
                       className="shrink-0 mt-1.5"

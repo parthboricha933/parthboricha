@@ -1,7 +1,12 @@
 'use client';
 
+import AOSProvider from '@/components/portfolio/AOSProvider';
+import Preloader from '@/components/portfolio/Preloader';
 import CustomCursor from '@/components/portfolio/CustomCursor';
 import ScrollProgress from '@/components/portfolio/ScrollProgress';
+import CursorLine from '@/components/portfolio/CursorLine';
+import GoldenBlob from '@/components/portfolio/GoldenBlob';
+import MobileChatButtons from '@/components/portfolio/MobileChatButtons';
 import Header from '@/components/portfolio/Header';
 import SidebarNav from '@/components/portfolio/SidebarNav';
 import SocialSidebar from '@/components/portfolio/SocialSidebar';
@@ -17,27 +22,33 @@ import Footer from '@/components/portfolio/Footer';
 
 export default function Home() {
   return (
-    <main
-      className="relative min-h-screen"
-      style={{ backgroundColor: '#222831', color: '#F8F6F6' }}
-    >
+    <AOSProvider>
+      <Preloader />
       <CustomCursor />
       <ScrollProgress />
+      <CursorLine />
+      <GoldenBlob />
       <Header />
       <SidebarNav />
       <SocialSidebar />
+      <MobileChatButtons />
 
-      <div className="max-w-6xl mx-auto">
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <ReviewsSection />
-        <CertificationsSection />
-        <GithubSection />
-        <ContactSection />
-        <Footer />
-      </div>
-    </main>
+      <main
+        className="relative min-h-screen"
+        style={{ backgroundColor: '#222831', color: '#F8F6F6' }}
+      >
+        <div className="max-w-6xl mx-auto">
+          <HeroSection />
+          <AboutSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <ReviewsSection />
+          <CertificationsSection />
+          <GithubSection />
+          <ContactSection />
+          <Footer />
+        </div>
+      </main>
+    </AOSProvider>
   );
 }

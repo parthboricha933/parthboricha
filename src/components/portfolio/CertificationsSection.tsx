@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { Award } from 'lucide-react';
 
 interface Certification {
@@ -29,76 +28,64 @@ const certifications: Certification[] = [
 
 export default function CertificationsSection() {
   return (
-    <section id="certifications" className="py-24 px-6 sm:px-12 lg:px-24">
-      <div className="max-w-6xl mx-auto">
-        {/* Section title */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold"
-            style={{ fontFamily: 'var(--font-montserrat)' }}
-          >
-            Licenses & <span style={{ color: '#FFD369' }}>Certifications</span>
-          </h2>
-        </motion.div>
+    <section id="certifications" className="py-0">
+      {/* Dark top background */}
+      <div style={{ height: '400px', backgroundColor: '#1B2028' }} />
 
-        {/* Certifications */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {certifications.map((cert, i) => (
-            <motion.div
-              key={cert.title}
-              className="p-6 rounded-lg transition-all duration-300 hover:-translate-y-1"
-              style={{
-                backgroundColor: '#2A363B',
-                borderLeft: '4px solid #FFD369',
-                borderRight: '1px solid rgba(248,246,246,0.05)',
-                borderTop: '1px solid rgba(248,246,246,0.05)',
-                borderBottom: '1px solid rgba(248,246,246,0.05)',
-              }}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+      {/* Certifications content overlapping */}
+      <div className="px-6 sm:px-12 lg:px-24 -mt-80 relative z-10 pb-24">
+        <div className="max-w-6xl mx-auto">
+          {/* Section title */}
+          <div className="mb-16" data-aos="zoom-in-right">
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold"
+              style={{ fontFamily: 'var(--font-montserrat)' }}
             >
-              <Award
-                size={28}
-                className="mb-4"
-                style={{ color: '#FFD369' }}
-              />
-              <h3
-                className="text-base font-bold mb-2"
-                style={{
-                  color: '#F8F6F6',
-                  fontFamily: 'var(--font-montserrat)',
-                }}
+              Licenses & <span style={{ color: '#FFD369' }}>Certifications</span>
+            </h2>
+          </div>
+
+          {/* Certifications */}
+          <div className="grid md:grid-cols-3 gap-6">
+            {certifications.map((cert, i) => (
+              <div
+                key={cert.title}
+                className="cert-card-gold p-6 rounded-lg transition-all duration-300 hover:-translate-y-1"
+                data-aos="zoom-out-right"
+                data-aos-delay={i * 100}
               >
-                {cert.title}
-              </h3>
-              <p
-                className="text-sm mb-1"
-                style={{
-                  color: '#FFD369',
-                  fontFamily: 'var(--font-quicksand)',
-                }}
-              >
-                {cert.issuer}
-              </p>
-              <p
-                className="text-xs"
-                style={{
-                  color: '#a8b2d1',
-                  fontFamily: 'var(--font-source-code-pro)',
-                }}
-              >
-                {cert.date}
-              </p>
-            </motion.div>
-          ))}
+                <Award
+                  size={28}
+                  className="cert-icon mb-4"
+                  style={{ color: '#222831' }}
+                />
+                <h3
+                  className="cert-title text-base font-bold mb-2"
+                  style={{
+                    fontFamily: 'var(--font-montserrat)',
+                  }}
+                >
+                  {cert.title}
+                </h3>
+                <p
+                  className="text-sm mb-1"
+                  style={{
+                    fontFamily: 'var(--font-quicksand)',
+                  }}
+                >
+                  {cert.issuer}
+                </p>
+                <p
+                  className="text-xs opacity-70"
+                  style={{
+                    fontFamily: 'var(--font-source-code-pro)',
+                  }}
+                >
+                  {cert.date}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
