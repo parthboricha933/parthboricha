@@ -24,19 +24,7 @@ const experiences: ExperienceData[] = [
       'Mentored 3 junior developers and conducted weekly code review sessions',
     ],
   },
-  {
-    company: 'CodeCraft Studios',
-    title: 'Full Stack Developer @ CodeCraft Studios',
-    duration: 'Onsite - Full Time | Jun 2022 - Dec 2023',
-    bullets: [
-      'Built and maintained 10+ web applications using MERN stack for diverse industries',
-      'Developed custom CMS solutions and e-commerce platforms with Stripe integration',
-      'Migrated 4 WordPress websites to modern React/Next.js applications',
-      'Integrated third-party APIs including payment gateways, analytics, and social platforms',
-      'Reduced page load times by 70% through code splitting and lazy loading strategies',
-      'Wrote comprehensive unit and integration tests achieving 85%+ code coverage',
-    ],
-  },
+
 ];
 
 export default function ExperienceSection() {
