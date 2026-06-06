@@ -31,7 +31,7 @@ export default function GithubSection() {
     <section id="github" className="view-element py-24 px-6 sm:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
-        <div className="mb-16" data-aos="fade-up">
+        <div className="mb-16" data-aos="zoom-in-right">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
@@ -53,9 +53,9 @@ export default function GithubSection() {
                 data-aos-delay={i * 50}
               >
                 <Icon
-                  size={28}
+                  size={22}
                   className="mx-auto mb-3"
-                  style={{ color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
+                  style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }}
                 />
                 <p
                   className="text-2xl font-bold mb-1"
@@ -116,7 +116,7 @@ export default function GithubSection() {
           href="https://github.com/parthboricha"
           target="_blank"
           rel="noopener noreferrer"
-          className="tk-button inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-sm transition-all duration-300"
+          className="tk-button inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-sm"
           data-aos="fade-up"
           data-aos-delay="200"
           style={{

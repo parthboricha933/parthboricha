@@ -15,6 +15,7 @@ export default function ScrollProgress() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -22,7 +23,7 @@ export default function ScrollProgress() {
     <div
       className="scroll-progress-bar"
       style={{
-        width: `${scrollPercent}%`,
+        transform: `translateX(${scrollPercent - 100}%)`,
       }}
     />
   );
