@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { Mail, MapPin, Github } from 'lucide-react';
+import { Mail, MapPin, Github, Phone } from 'lucide-react';
 
 export default function ContactSection() {
   const [scrollY, setScrollY] = useState(0);
@@ -114,6 +114,18 @@ export default function ContactSection() {
                 >
                   <Mail size={16} style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }} />
                   parthboricha.dev@gmail.com
+                </a>
+                <a
+                  href="tel:+918347185730"
+                  className="flex items-center gap-2 text-sm hover:gap-3"
+                  style={{
+                    color: 'var(--themeColor3)',
+                    fontFamily: 'var(--font-source-code-pro)',
+                    transition: 'color 0.3s ease, gap 0.3s ease',
+                  }}
+                >
+                  <Phone size={16} style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }} />
+                  +91 8347185730
                 </a>
                 <span
                   className="flex items-center gap-2 text-sm"
