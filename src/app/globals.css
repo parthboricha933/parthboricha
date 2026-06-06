@@ -384,15 +384,19 @@
 .review-card-right {
   align-self: flex-end;
   transform: translateX(110%) rotate(4deg);
+  opacity: 0;
+  transition: all 800ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 .review-card-left {
   align-self: flex-start;
   transform: translateX(-110%) rotate(-4deg);
+  opacity: 0;
+  transition: all 800ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 .review-card-right.in-view,
 .review-card-left.in-view {
   transform: translateX(0) rotate(0deg);
-  transition: all 1000ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+  opacity: 1;
 }
 
 /* ==============================

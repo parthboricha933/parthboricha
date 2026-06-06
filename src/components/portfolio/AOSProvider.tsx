@@ -7,10 +7,12 @@ import 'aos/dist/aos.css';
 export default function AOSProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     AOS.init({
-      easing: 'ease',
-      duration: 400,
+      easing: 'ease-out-cubic',
+      duration: 600,
       delay: 0,
-      once: true,
+      once: false,
+      mirror: true,
+      anchorPlacement: 'top-bottom',
     });
   }, []);
 

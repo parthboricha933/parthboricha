@@ -45,7 +45,7 @@ const reviews: Review[] = [
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const isInView = useInView(ref, { once: false, margin: '-50px' });
   const isEven = index % 2 === 0;
 
   return (
