@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 
 const techStack = [
   'JavaScript',
@@ -194,13 +193,10 @@ export default function AboutSection() {
                 className="relative rounded-lg overflow-hidden w-64 h-80 sm:w-72 sm:h-96"
                 style={{ border: '3px solid var(--themeColor3)', zIndex: 1, transition: 'border-color 0.3s ease' }}
               >
-                <Image
+                <img
                   src="/assets/profile.jpg"
                   alt="Parth Boricha"
-                  fill
-                  sizes="(max-width: 768px) 256px, 288px"
-                  className="object-cover"
-                  priority
+                  className="object-cover w-full h-full"
                 />
               </div>
               {/* Decorative element */}

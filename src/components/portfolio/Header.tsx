@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Eye, Heart, Menu, X } from 'lucide-react';
-import Image from 'next/image';
 
 const navItems = [
   { label: 'HOME', href: '#home' },
@@ -50,11 +49,9 @@ export default function Header() {
                 className="w-9 h-9 rounded-full overflow-hidden border-2"
                 style={{ borderColor: 'var(--themeColor4)', transition: 'border-color 0.3s ease' }}
               >
-                <Image
+                <img
                   src="/assets/profile.jpg"
                   alt="Parth Boricha"
-                  width={36}
-                  height={36}
                   className="object-cover w-full h-full"
                 />
               </div>
