@@ -8,7 +8,6 @@ const sections = [
   { id: 'experience', label: 'EXPERIENCE' },
   { id: 'my-work', label: 'MY WORK' },
   { id: 'reviews', label: 'REVIEWS' },
-  { id: 'certifications', label: 'CERTIFICATIONS' },
   { id: 'github', label: 'GITHUB' },
   { id: 'contact', label: 'CONTACT' },
 ];

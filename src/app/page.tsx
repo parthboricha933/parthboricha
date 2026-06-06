@@ -16,7 +16,6 @@ import AboutSection from '@/components/portfolio/AboutSection';
 import ExperienceSection from '@/components/portfolio/ExperienceSection';
 import ProjectsSection from '@/components/portfolio/ProjectsSection';
 import ReviewsSection from '@/components/portfolio/ReviewsSection';
-import CertificationsSection from '@/components/portfolio/CertificationsSection';
 import GithubSection from '@/components/portfolio/GithubSection';
 import ContactSection from '@/components/portfolio/ContactSection';
 import Footer from '@/components/portfolio/Footer';
@@ -42,7 +41,6 @@ export default function Home() {
             <ExperienceSection />
             <ProjectsSection />
             <ReviewsSection />
-            <CertificationsSection />
             <GithubSection />
             <ContactSection />
             <Footer />

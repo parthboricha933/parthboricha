@@ -7,13 +7,12 @@ const themes = [
   { color1: '#222831', color2: '#393E46', color3: '#EEEEEE', color4: '#00ADB5' }, // Experience
   { color1: '#222831', color2: '#393E46', color3: '#00ADB5', color4: '#EEEEEE' }, // My Work
   { color1: '#222831', color2: '#393E46', color3: '#FFD369', color4: '#EEEEEE' }, // Reviews
-  { color1: '#222831', color2: '#EEEEEE', color3: '#00ADB5', color4: '#393E46' }, // Certifications
   { color1: '#222831', color2: '#393E46', color3: '#00ADB5', color4: '#EEEEEE' }, // GitHub
   { color1: '#F8F8F8', color2: '#434343', color3: '#FAEBCD', color4: '#F7C873' }, // Contact
   { color1: '#F8F6F6', color2: '#F5D061', color3: '#2A363B', color4: '#CF4647' }, // After Contact
 ];
 
-const sectionIds = ['home', 'myself', 'experience', 'my-work', 'reviews', 'certifications', 'github', 'contact'];
+const sectionIds = ['home', 'myself', 'experience', 'my-work', 'reviews', 'github', 'contact'];
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [currentTheme, setCurrentTheme] = useState(0);
