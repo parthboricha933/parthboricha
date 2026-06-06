@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { Quote } from 'lucide-react';
 
 interface Review {
@@ -45,21 +44,72 @@ const reviews: Review[] = [
 
 function ReviewCard({ review, index }: { review: Review; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: false, margin: '-50px' });
+  const [transform, setTransform] = useState('');
   const isEven = index % 2 === 0;
+
+  const calcTransform = useCallback(() => {
+    if (!ref.current) return;
+    const el = ref.current;
+    const rect = el.getBoundingClientRect();
+    const viewportH = window.innerHeight;
+
+    // Start: card just entering view from below
+    const startScroll = el.offsetTop + 150 - viewportH;
+    // End: card has scrolled past the top
+    const endScroll = el.offsetTop + 150 + viewportH;
+
+    const scrollY = window.scrollY;
+    let progress = (scrollY - startScroll) / (endScroll - startScroll);
+    progress = Math.max(0, Math.min(1, progress));
+
+    // easeOutBack easing for bounce effect
+    const c1 = 1.70158;
+    const c3 = c1 + 1;
+    const eased = 1 + c3 * Math.pow(progress - 1, 3) + c1 * Math.pow(progress - 1, 2);
+
+    const maxTranslate = 110; // percentage
+    const maxRotate = 4; // degrees
+
+    if (isEven) {
+      // Even: slides from right
+      const tx = maxTranslate * (1 - eased);
+      const rot = maxRotate * (1 - eased);
+      setTransform(`translateX(${tx}%) rotate(${rot}deg)`);
+    } else {
+      // Odd: slides from left
+      const tx = -maxTranslate * (1 - eased);
+      const rot = -maxRotate * (1 - eased);
+      setTransform(`translateX(${tx}%) rotate(${rot}deg)`);
+    }
+  }, [isEven]);
+
+  useEffect(() => {
+    calcTransform(); // Initial calculation
+
+    const handleScroll = () => {
+      requestAnimationFrame(calcTransform);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [calcTransform]);
 
   return (
     <div
       ref={ref}
-      className={`p-6 rounded-lg ${
-        isEven ? 'review-card-right' : 'review-card-left'
-      } ${isInView ? 'in-view' : ''}`}
+      className={`p-6 rounded-lg ${isEven ? 'self-end' : 'self-start'}`}
       style={{
         backgroundColor: isEven ? 'var(--themeColor1)' : 'var(--themeColor2)',
         color: isEven ? 'var(--themeColor3)' : 'var(--themeColor1)',
         border: '1px solid var(--themeColor2)',
         maxWidth: '90%',
-        transition: 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease',
+        transform,
+        willChange: 'transform',
+        transition: 'background-color 1s cubic-bezier(0.18, 0.89, 0.32, 1.28), color 0.3s ease, border-color 0.3s ease',
       }}
     >
       <Quote
@@ -108,7 +158,7 @@ export default function ReviewsSection() {
     <section id="reviews" className="view-element py-24 px-6 sm:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Section title */}
-        <div className="mb-16" data-aos="fade-up">
+        <div className="mb-16" data-aos="zoom-in-right">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-bold"
             style={{ fontFamily: 'var(--font-montserrat)', color: 'var(--themeColor3)', transition: 'color 0.3s ease' }}
