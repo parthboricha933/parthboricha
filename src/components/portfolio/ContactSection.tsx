@@ -104,7 +104,7 @@ export default function ContactSection() {
 
               <div className="flex flex-col gap-4 mb-8">
                 <a
-                  href="mailto:parthboricha.dev@gmail.com"
+                  href="mailto:borichaparth5@gmail.com"
                   className="flex items-center gap-2 text-sm hover:gap-3"
                   style={{
                     color: 'var(--themeColor3)',
@@ -113,7 +113,7 @@ export default function ContactSection() {
                   }}
                 >
                   <Mail size={16} style={{ color: 'var(--themeColor4)', transition: 'color 0.3s ease' }} />
-                  parthboricha.dev@gmail.com
+                  borichaparth5@gmail.com
                 </a>
                 <a
                   href="tel:+918347185730"
@@ -137,7 +137,7 @@ export default function ContactSection() {
               </div>
 
               <a
-                href="mailto:parthboricha.dev@gmail.com"
+                href="mailto:borichaparth5@gmail.com"
                 className="tk-button inline-flex items-center gap-2 px-8 py-3 rounded font-semibold text-base animate-shadow-pulse"
                 style={{
                   fontFamily: 'var(--font-montserrat)',

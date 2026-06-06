@@ -20,7 +20,7 @@ const socialLinks = [
   },
   {
     icon: Mail,
-    href: 'mailto:parthboricha.dev@gmail.com',
+    href: 'mailto:borichaparth5@gmail.com',
     label: 'Email',
   },
 ];
@@ -59,7 +59,7 @@ export default function SocialSidebar() {
 
       {/* Email rotated */}
       <a
-        href="mailto:parthboricha.dev@gmail.com"
+        href="mailto:borichaparth5@gmail.com"
         className="text-xs tracking-widest"
         style={{
           color: 'var(--themeColor3)',
@@ -75,7 +75,7 @@ export default function SocialSidebar() {
           (e.currentTarget as HTMLElement).style.color = 'var(--themeColor3)';
         }}
       >
-        parthboricha.dev@gmail.com
+        borichaparth5@gmail.com
       </a>
 
       {/* Bottom line */}
