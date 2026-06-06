@@ -58,14 +58,20 @@ export const metadata: Metadata = {
     icon: "/logo.svg",
   },
   openGraph: {
-    title: "Parth Boricha | Freelance Full Stack Web Developer",
+    title: "Parth Boricha | Full Stack Web Developer",
     description:
-      "Passionate full stack web developer with 3+ years of experience building modern web applications with React, Next.js, and Node.js.",
+      "I build modern web applications with React, Next.js, and Node.js. Check out my portfolio and let's work together!",
     type: "website",
     url: "https://parthboricha.vercel.app",
     siteName: "Parth Boricha Portfolio",
     locale: "en_US",
     images: [
+      {
+        url: "https://parthboricha.vercel.app/assets/og-banner.png",
+        width: 1344,
+        height: 768,
+        alt: "Parth Boricha - Full Stack Web Developer | Portfolio",
+      },
       {
         url: "https://parthboricha.vercel.app/assets/profile.jpg",
         width: 1200,
@@ -76,10 +82,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Parth Boricha | Freelance Full Stack Web Developer",
+    title: "Parth Boricha | Full Stack Web Developer",
     description:
-      "Passionate full stack web developer with 3+ years of experience building modern web applications.",
-    images: ["https://parthboricha.vercel.app/assets/profile.jpg"],
+      "I build modern web applications with React, Next.js, and Node.js. Check out my portfolio!",
+    images: ["https://parthboricha.vercel.app/assets/og-banner.png"],
+    creator: "@parthboricha",
+    site: "https://parthboricha.vercel.app",
   },
   alternates: {
     canonical: "https://parthboricha.vercel.app",
@@ -96,6 +104,27 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#F5D061" />
         <link rel="canonical" href="https://parthboricha.vercel.app" />
+
+        {/* Instagram / WhatsApp / Facebook Link Preview */}
+        <meta property="og:title" content="Parth Boricha | Full Stack Web Developer" />
+        <meta property="og:description" content="I build modern web applications with React, Next.js, and Node.js. Check out my portfolio and let's work together!" />
+        <meta property="og:image" content="https://parthboricha.vercel.app/assets/og-banner.png" />
+        <meta property="og:image:width" content="1344" />
+        <meta property="og:image:height" content="768" />
+        <meta property="og:url" content="https://parthboricha.vercel.app" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Parth Boricha Portfolio" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* WhatsApp specific */}
+        <meta property="og:image:alt" content="Parth Boricha - Full Stack Web Developer Portfolio" />
+        <meta name="image" content="https://parthboricha.vercel.app/assets/og-banner.png" />
+
+        {/* LinkedIn sharing */}
+        <meta name="author" content="Parth Boricha" />
+
+        {/* Apple touch icon for mobile bookmarks */}
+        <link rel="apple-touch-icon" href="/assets/profile.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
