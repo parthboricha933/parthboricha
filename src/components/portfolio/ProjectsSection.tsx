@@ -6,51 +6,53 @@ interface Project {
   title: string;
   description: string;
   tech: string;
-  featured?: boolean;
+  category: string;
+  url: string;
 }
 
 const projects: Project[] = [
   {
-    title: 'TaskFlow Pro',
+    title: 'Bawarchi Restaurant',
     description:
-      'Project management SaaS platform with real-time collaboration, Kanban boards, and team analytics. Built with React, Node.js, and WebSocket.',
-    tech: 'React Js | Next.js | TypeScript | PostgreSQL | Socket.io | Tailwind CSS',
-    featured: true,
+      'A modern restaurant website for Bawarchi Restaurant in Diu, featuring an interactive menu, online table reservations, food gallery, and contact information. Designed to provide a seamless dining experience from browsing to booking.',
+    tech: 'React Js | Next.js | Tailwind CSS | MongoDB',
+    category: 'Restaurant',
+    url: 'https://bawarchirestaurantdiu.com',
   },
   {
-    title: 'ShopEase',
+    title: 'Saint Mary School',
     description:
-      'Full-featured e-commerce platform with Stripe payments, inventory management, and admin dashboard. Supports 1000+ products.',
-    tech: 'Next.js | TypeScript | Stripe | Prisma | PostgreSQL | Tailwind CSS',
-    featured: true,
+      'A comprehensive school management website for Saint Mary School, offering student enrollment information, academic programs, faculty details, event calendar, and parent portal. Built to streamline school communications and administration.',
+    tech: 'Next.js | TypeScript | Tailwind CSS | Vercel',
+    category: 'School',
+    url: 'https://saint-mary.vercel.app',
   },
   {
-    title: 'HealthHub',
+    title: 'Hotel Holiston',
     description:
-      'Healthcare booking platform connecting patients with doctors. Features video consultations, prescription management, and real-time notifications.',
-    tech: 'React Js | Node.js | WebRTC | MongoDB | Firebase | Tailwind CSS',
+      'A premium hotel booking website for Hotel Holiston, featuring room listings with photo galleries, online reservation system, amenity showcases, guest reviews, and location maps. Crafted to deliver a luxury browsing experience.',
+    tech: 'React Js | Next.js | Tailwind CSS | MongoDB',
+    category: 'Hotel',
+    url: 'https://hotel-holiston.vercel.app',
   },
   {
-    title: 'DevBlog CMS',
+    title: 'Sparsh Hospital',
     description:
-      'Modern headless CMS for developer blogs with markdown support, SEO optimization, and analytics dashboard.',
-    tech: 'Next.js | MDX | TypeScript | PostgreSQL | AWS S3 | Tailwind CSS',
-  },
-  {
-    title: 'FinTrack AI',
-    description:
-      'AI-powered personal finance tracker with expense categorization, budget forecasting, and investment portfolio insights.',
-    tech: 'React Js | Python | TensorFlow | Node.js | PostgreSQL | Chart.js',
-  },
-  {
-    title: 'EduLearn Platform',
-    description:
-      'Online learning platform with video courses, quizzes, progress tracking, and certificate generation.',
-    tech: 'Next.js | TypeScript | Stripe | MongoDB | AWS | Tailwind CSS',
+      'A professional healthcare website for Sparsh Hospital in Rajula, providing doctor profiles, department information, appointment booking, patient resources, and emergency contact details. Designed for accessibility and trust.',
+    tech: 'React Js | Next.js | Tailwind CSS | MongoDB',
+    category: 'Hospital',
+    url: 'https://sparshhospitalrajula.com',
   },
 ];
 
-function ProjectImage() {
+function ProjectImage({ category }: { category: string }) {
+  const categoryIcons: Record<string, string> = {
+    Restaurant: '🍽️',
+    School: '🎓',
+    Hotel: '🏨',
+    Hospital: '🏥',
+  };
+
   return (
     <div
       className="rounded-lg overflow-hidden w-full"
@@ -65,14 +67,27 @@ function ProjectImage() {
     >
       <div
         style={{
-          width: '60%',
-          height: '60%',
-          borderRadius: '8px',
-          border: '2px solid var(--themeColor1)',
-          opacity: 0.3,
-          transition: 'border-color 0.3s ease',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '12px',
+          opacity: 0.6,
         }}
-      />
+      >
+        <span style={{ fontSize: '48px' }}>{categoryIcons[category] || '🌐'}</span>
+        <span
+          style={{
+            fontFamily: 'var(--font-montserrat)',
+            color: 'var(--themeColor1)',
+            fontSize: '14px',
+            fontWeight: 600,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+          }}
+        >
+          {category}
+        </span>
+      </div>
     </div>
   );
 }
@@ -95,7 +110,7 @@ export default function ProjectsSection() {
         {/* Projects - alternating left/right layout */}
         <div className="flex flex-col gap-20">
           {projects.map((project, i) => {
-            const isEven = i % 2 === 0; // even = image left, text right
+            const isEven = i % 2 === 0;
             return (
               <div
                 key={project.title}
@@ -118,7 +133,7 @@ export default function ProjectsSection() {
                 >
                   {/* Image side */}
                   <div style={{ direction: 'ltr' }}>
-                    <ProjectImage />
+                    <ProjectImage category={project.category} />
                   </div>
 
                   {/* Text side */}
@@ -131,11 +146,23 @@ export default function ProjectsSection() {
                       transition: 'background-color 0.3s ease',
                     }}
                   >
-                    {project.featured && (
-                      <span className="featured-badge">
-                        Featured Project
-                      </span>
-                    )}
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        padding: '2px 10px',
+                        borderRadius: '4px',
+                        fontSize: '10px',
+                        fontWeight: 700,
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        backgroundColor: 'var(--themeColor4)',
+                        color: 'var(--themeColor1)',
+                        marginBottom: '12px',
+                        fontFamily: 'var(--font-montserrat)',
+                      }}
+                    >
+                      {project.category}
+                    </span>
 
                     <h3
                       className="text-lg font-bold mb-3"
@@ -173,13 +200,15 @@ export default function ProjectsSection() {
                     </p>
 
                     <a
-                      href="#"
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="view-demo-btn text-sm font-semibold"
                       style={{
                         fontFamily: 'var(--font-montserrat)',
                       }}
                     >
-                      View Live Demo <ExternalLink size={14} />
+                      Visit Website <ExternalLink size={14} />
                     </a>
                   </div>
                 </div>
@@ -194,7 +223,7 @@ export default function ProjectsSection() {
                     transition: 'border-color 0.3s ease',
                   }}
                 >
-                  <ProjectImage />
+                  <ProjectImage category={project.category} />
                   <div
                     style={{
                       padding: '24px',
@@ -202,11 +231,23 @@ export default function ProjectsSection() {
                       transition: 'background-color 0.3s ease',
                     }}
                   >
-                    {project.featured && (
-                      <span className="featured-badge">
-                        Featured Project
-                      </span>
-                    )}
+                    <span
+                      style={{
+                        display: 'inline-block',
+                        padding: '2px 10px',
+                        borderRadius: '4px',
+                        fontSize: '10px',
+                        fontWeight: 700,
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        backgroundColor: 'var(--themeColor4)',
+                        color: 'var(--themeColor1)',
+                        marginBottom: '12px',
+                        fontFamily: 'var(--font-montserrat)',
+                      }}
+                    >
+                      {project.category}
+                    </span>
 
                     <h3
                       className="text-lg font-bold mb-3"
@@ -244,13 +285,15 @@ export default function ProjectsSection() {
                     </p>
 
                     <a
-                      href="#"
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="view-demo-btn text-sm font-semibold"
                       style={{
                         fontFamily: 'var(--font-montserrat)',
                       }}
                     >
-                      View Live Demo <ExternalLink size={14} />
+                      Visit Website <ExternalLink size={14} />
                     </a>
                   </div>
                 </div>
