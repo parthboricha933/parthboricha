@@ -161,7 +161,7 @@ export default function ContactSection() {
                 <Github size={40} style={{ color: 'var(--themeColor3)', transition: 'color 0.3s ease' }} />
               </div>
               <a
-                href="https://github.com/parthboricha"
+                href="https://github.com/parthboricha933"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-semibold flex items-center gap-2 hover:gap-3"

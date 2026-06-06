@@ -113,7 +113,7 @@ export default function GithubSection() {
 
         {/* GitHub profile button */}
         <a
-          href="https://github.com/parthboricha"
+          href="https://github.com/parthboricha933"
           target="_blank"
           rel="noopener noreferrer"
           className="tk-button inline-flex items-center gap-2 px-6 py-3 rounded font-semibold text-sm"

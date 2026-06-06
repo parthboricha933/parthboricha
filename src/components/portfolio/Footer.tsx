@@ -11,7 +11,7 @@ export default function Footer() {
       }}
     >
       <a
-        href="https://github.com/parthboricha"
+        href="https://github.com/parthboricha933"
         target="_blank"
         rel="noopener noreferrer"
         className="text-sm transition-colors duration-300"
